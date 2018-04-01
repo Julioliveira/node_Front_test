@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="jumbotron">
+        <form class="form-horizontal" action="/action_page.php">
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="name">Name:</label>
+                <div class="col-sm-12">
+                    <input ng-model="supermarket.name" type="text" class="form-control" id="name" placeholder="Enter supermarket name">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="description">Description:</label>
+                <div class="col-sm-12">
+                    <textarea ng-model="supermarket.description" class="form-control" rows="5" id="description" placeholder="Enter supermarket description"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="location">Location:</label>
+                <div class="col-sm-12">
+                    <textarea ng-model="supermarket.location" class="form-control" rows="2" id="location" placeholder="Enter supermarket location"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                    <label class="control-label col-sm-2" for="location">Location:</label>
+                    <div class="col-sm-12">
+                        <input ng-model="file" type="file" accept="image/*" ng- class="form-control">
+                        {{file}}
+                    </div>
+                    
+                </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

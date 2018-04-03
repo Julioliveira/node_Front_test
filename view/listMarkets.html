@@ -5,16 +5,34 @@
 </pre> -->
 
 <!-- <div ng-repeat="supermarket in retorno" class="col-xs-4" > -->
-    <div class="col-xs-12">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <a class="navbar-brand" href="#/">Home</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+              
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                      <a class="nav-link" href="#/new">New Supermarket<span class="sr-only">(current)</span></a>
+                    </li>
+                  </ul>
+                  <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" ng-model="nameSearch" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="button" ng-click="searchName()">Search</button>
+                  </form>
+                </div>
+              </nav>
+    <div class="col-xs-12" style="margin: 1%;">
     <div ng-repeat="supermarket in retorno" class="card" style="width: 25%; display: inline-block;">
-        <img class="card-img-top" src="{{supermarket.image}}" alt="Card image cap" >
+        <img class="card-img-top" ng-src="{{supermarket.image.url || '/resources/no image available.jpeg'}} " style=" max-height: 200px;" alt="Card image cap" >
 
         <div class="card-body">
             <h5 class="card-title">{{supermarket.name}}</h5>
             <p class="card-text">{{supermarket.description}}</p>
             <p class="card-text"><i>{{supermarket.location}}</i></p>
-            <button class="btn btn-md btn-primary">Edit</button>
-            <button class="btn btn-md btn-danger">Delete</button>
+            <button class="btn btn-md btn-primary" ng-click="edit(supermarket._id)">Edit</button>
+            <button class="btn btn-md btn-danger" ng-click="delete(supermarket)">Delete</button>
         </div>
     </div>
     </div>

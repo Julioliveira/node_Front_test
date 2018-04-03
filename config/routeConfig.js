@@ -9,6 +9,10 @@ angular.module("catwalk").config(function($routeProvider){
     })
     .when("/markets/:id", {
         templateUrl: "view/market.html",
-        controller: "ediMarketCtrl"
+        controller: "editMarketCtrl"
+    })
+    .otherwise({
+        templateUrl: "view/listMarkets.html",
+        controller: "marketsCtrl"
     })
 });

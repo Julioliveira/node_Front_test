@@ -11,6 +11,15 @@ angular.module('catwalk')
                 }
             });
         };
+        var _pesquisarNome = function (name) {
+            return $http({
+                method: 'GET',
+                url: config.API_URL + 'markets/search/' + name,
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            });
+        };
 
         var _obter = function (id) {
             return $http({
@@ -23,31 +32,41 @@ angular.module('catwalk')
         };
 
         var _criar = function (dados) {
-            return $http({
-                method: 'POST',
-                url: config.API_URL + 'user/',
+            var fd = new FormData();
+            for (var key in dados)
+                fd.append(key,dados[key]);
+            return $http.post(config.API_URL + 'markets/', fd, {
+                transformRequest: angular.identity,
                 headers: {
-                    'Content-Type': 'application/json',
+                    'Content-Type': undefined,
                 },
-                data: dados
             });
         };
 
-        var _editar = function (dados) {
-            return $http({
-                method: 'PATCH',
-                url: config.API_URL + 'user',
+        var _editar = function (dados, id) {
+            var fd = new FormData();
+            for (var key in dados)
+                fd.append(key,dados[key]);
+            return $http.patch(config.API_URL + 'markets/'+id, fd, {
+                transformRequest: angular.identity,
                 headers: {
-                    'Content-Type': 'application/json',
+                    'Content-Type': undefined,
                 },
-                data: dados
             });
+            // return $http({
+            //     method: 'PATCH',
+            //     url: config.API_URL + 'markets/' + id,
+            //     headers: {
+            //         'Content-Type': 'application/json',
+            //     },
+            //     data: dados
+            // });
         };
 
         var _deletar = function (id) {
             return $http({
                 method: 'DELETE',
-                url: config.API_URL + 'user/' + id,
+                url: config.API_URL + 'markets/' + id,
                 headers: {
                     'Content-Type': 'application/json',
                 },
@@ -56,6 +75,7 @@ angular.module('catwalk')
 
         return {
             pesquisar: _pesquisar,
+            pesquisarNome: _pesquisarNome,
             obter: _obter,
             criar: _criar,
             editar: _editar,

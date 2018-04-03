@@ -17,6 +17,5 @@
   "author": "Julio Oliveira",
   "license": "ISC",
   "dependencies": {
-    "s3fs": "git+https://github.com/RiptideElements/s3fs.git"
   }
 }

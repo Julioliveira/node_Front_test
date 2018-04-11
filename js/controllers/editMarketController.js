@@ -10,7 +10,7 @@ angular.module("catwalk").controller("editMarketCtrl", function ($scope, superMa
         var retorno = response && response.data && response.data.doc ? response.data.doc : {};
         $scope.supermarket = retorno;
         tempImage = $scope.supermarket.image;
-        $scope.previewSource = $scope.supermarket.image.url;
+        $scope.previewSource = $scope.supermarket.image ? $scope.supermarket.image.url : null;
     });
 
     $scope.deleteImage = function (supermarket) {
@@ -41,8 +41,6 @@ angular.module("catwalk").controller("editMarketCtrl", function ($scope, superMa
             }
             fr.readAsDataURL(files[0]);
         }
-
-        // Not supported
         else {
             // fallback -- perhaps submit the input to an iframe and temporarily store
             // them on the server until the user's session ends.
